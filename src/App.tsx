@@ -17,20 +17,52 @@ function App() {
 
         <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
 
-          <div style={{ width: '100%' }}>
-            <div style={{ backgroundColor: 'white', width: '100%' }}>
-              <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+
+          <div style={{ display: 'flex', flexDirection: 'column', backgroundColor: 'white', width: '100%' }}>
+
+            <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+              <div style={{ display: 'flex', width: '100%' }} >
+                <div style={{ height: '20px', width: '50%', borderRight: '2px solid gray' }}></div>
+                <div style={{ height: '20px', width: '50%', borderTop: '2px solid gray' }}></div>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', border: '2px solid gray', width: 'fit-content' }}>
+                <p>Category1</p>
+                <img src={addIcon} alt="add" width='24px' height='24px' />
+              </div>
+              <div style={{ borderRight: '2px solid gray', width: '2px', height: '20px' }}></div>
+            </div>
+
+            {/* subCategory group */}
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              {/* sub1 */}
+              <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column', width: '100%' }}>
                 <div style={{ display: 'flex', width: '100%' }} >
                   <div style={{ height: '20px', width: '50%', borderRight: '2px solid gray' }}></div>
                   <div style={{ height: '20px', width: '50%', borderTop: '2px solid gray' }}></div>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', border: '2px solid gray', width: 'fit-content' }}>
-                  <p>Categories</p>
+                  <p>Sub1</p>
                   <img src={addIcon} alt="add" width='24px' height='24px' />
                 </div>
               </div>
+              {/* /sub1 */}
+
+              {/* sub2 */}
+              <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column', width: '100%' }}>
+                <div style={{ display: 'flex', width: '100%' }} >
+                  <div style={{ height: '20px', width: '50%', borderRight: '2px solid gray', borderTop: '2px solid gray' }}></div>
+                  <div style={{ height: '20px', width: '50%' }}></div>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', border: '2px solid gray', width: 'fit-content' }}>
+                  <p>Sub2</p>
+                  <img src={addIcon} alt="add" width='24px' height='24px' />
+                </div>
+              </div>
+              {/* /sub2 */}
             </div>
+            {/* /subcategory */}
           </div>
+
 
 
 
