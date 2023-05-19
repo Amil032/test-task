@@ -1,116 +1,241 @@
 import addIcon from './assests/add_icon_48.png';
 import './App.css';
+import { Subcategory } from './components/subcategory/Subcategory';
+import { Category } from './components/Category';
+import { useState } from 'react';
+
+const categories = [
+  {
+    name: 'Category1',
+    subcat: [{
+      name: 'subcat1',
+      subcat: [{
+        name: 'subsubcat',
+        subcat: [{
+          name: 'subcatsubcat2'
+        }]
+      }]
+    }, {
+      name: 'subcat2'
+    }
+    ]
+
+  },
+  {
+
+    name: 'Category2',
+    subcat: [
+      {
+        name: 'sub1',
+        subcat: [
+          {
+            name: 'subsubcat',
+            subcat: [{
+              name: 'subcatsubcat2'
+            }]
+          }, { name: 'ddfdfd' }
+        ]
+      }
+    ]
+
+  }
+  ,
+  {
+    name: 'Category3',
+    subcat: [{
+      name: 'subcut3',
+      subcat: [
+        {
+          name: 'subcutsub3',
+          subcat: [
+            {
+              name: 'subsubsub3',
+              subcat: [
+                {
+                  name: 'subsubsub3',
+                  subcat: []
+                },
+                {
+                  name: 'subsubsub32'
+                }
+              ]
+            },
+            {
+              name: 'subsubsub32', subcat: [
+                {
+                  name: 'subsubsub3',
+                  subcat: [
+                    {
+                      name: 'subsubsub4'
+                    },
+                    {
+                      name: 'subsubsub42',
+
+                    }
+                  ]
+                },
+                {
+                  name: 'subsubsub32'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          name: 'subcutsub4',
+          subcat: [
+            {
+              name: 'subsubsub4',
+              subcat: [
+                {
+                  name: 'subsubsub4',
+                  subcat: [
+                    {
+                      name: 'subsubsub4'
+                    },
+                    {
+                      name: 'subsubsub42',
+
+                    }
+                  ]
+                },
+                {
+                  name: 'subsubsub42',
+
+                }
+              ]
+            },
+            {
+              name: 'subsubsub42',
+
+            }
+          ]
+        }]
+    }]
+  }
+  ,
+  {
+    name: 'Category3',
+    subcat: [{
+      name: 'subcut3',
+      subcat: [
+        {
+          name: 'subcutsub3',
+          subcat: [
+            {
+              name: 'subsubsub3',
+              subcat: [
+                {
+                  name: 'subsubsub3',
+                  subcat: []
+                },
+                {
+                  name: 'subsubsub32'
+                }
+              ]
+            },
+            {
+              name: 'subsubsub32', subcat: [
+                {
+                  name: 'subsubsub3',
+                  subcat: [
+                    {
+                      name: 'subsubsub4'
+                    },
+                    {
+                      name: 'subsubsub42',
+
+                    }
+                  ]
+                },
+                {
+                  name: 'subsubsub32'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          name: 'subcutsub4',
+          subcat: [
+            {
+              name: 'subsubsub4',
+              subcat: [
+                {
+                  name: 'subsubsub4',
+                  subcat: [
+                    {
+                      name: 'subsubsub4'
+                    },
+                    {
+                      name: 'subsubsub42',
+
+                    }
+                  ]
+                },
+                {
+                  name: 'subsubsub42',
+
+                }
+              ]
+            },
+            {
+              name: 'subsubsub42',
+
+            }
+          ]
+        }]
+    }]
+  }
+  , {
+    name: 'ail'
+  }
+]
 
 function App() {
+  const [data, setData] = useState<Array<any>>(categories)
+  const addClickHandler = () => {
+    setData(prev => ([...prev, { name: 'dsfdf' }]))
+
+  }
+  console.log(data)
   return (
+
     <div className="App">
-      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '50px', alignItems: 'center' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '50px', alignItems: 'center', overflow: 'auto' }}>
 
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <div style={{ display: 'flex', alignItems: 'center', border: '2px solid gray' }}>
+          <div style={{ display: 'flex', alignItems: 'center', border: '2px solid rgba(154, 152, 152, 0.584)', borderRadius: '10px' }}>
             <p>Head category</p>
-            <img src={addIcon} alt="add" width='24px' height='24px' />
+            <img src={addIcon} alt="add" width='24px' height='24px' onClick={addClickHandler} />
           </div>
-          <div style={{ borderRight: '2px solid gray', width: '2px', height: '20px' }}></div>
+          <div style={{ borderRight: '2px solid rgba(154, 152, 152, 0.584)', width: '2px', height: '20px' }}></div>
         </div>
 
 
-        <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
-
-
-          <div style={{ display: 'flex', flexDirection: 'column', backgroundColor: 'white', width: '100%' }}>
-
-            <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
-              <div style={{ display: 'flex', width: '100%' }} >
-                <div style={{ height: '20px', width: '50%', borderRight: '2px solid gray' }}></div>
-                <div style={{ height: '20px', width: '50%', borderTop: '2px solid gray' }}></div>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', border: '2px solid gray', width: 'fit-content' }}>
-                <p>Category1</p>
-                <img src={addIcon} alt="add" width='24px' height='24px' />
-              </div>
-              <div style={{ borderRight: '2px solid gray', width: '2px', height: '20px' }}></div>
-            </div>
-
-            {/* subCategory group */}
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              {/* sub1 */}
-              <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column', width: '100%' }}>
-                <div style={{ display: 'flex', width: '100%' }} >
-                  <div style={{ height: '20px', width: '50%', borderRight: '2px solid gray' }}></div>
-                  <div style={{ height: '20px', width: '50%', borderTop: '2px solid gray' }}></div>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', border: '2px solid gray', width: 'fit-content' }}>
-                  <p>Sub1</p>
-                  <img src={addIcon} alt="add" width='24px' height='24px' />
-                </div>
-              </div>
-              {/* /sub1 */}
-
-              {/* sub2 */}
-              <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column', width: '100%' }}>
-                <div style={{ display: 'flex', width: '100%' }} >
-                  <div style={{ height: '20px', width: '50%', borderRight: '2px solid gray', borderTop: '2px solid gray' }}></div>
-                  <div style={{ height: '20px', width: '50%' }}></div>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', border: '2px solid gray', width: 'fit-content' }}>
-                  <p>Sub2</p>
-                  <img src={addIcon} alt="add" width='24px' height='24px' />
-                </div>
-              </div>
-              {/* /sub2 */}
-            </div>
-            {/* /subcategory */}
-          </div>
-
-
-
-
-          <div style={{ width: '100%' }}>
-            <div style={{ backgroundColor: 'white', width: '100%' }}>
-              <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
-                <div style={{ display: 'flex', width: '100%' }} >
-                  <div style={{ height: '20px', width: '50%', borderRight: '2px solid gray', borderTop: '2px solid gray' }}></div>
-                  <div style={{ height: '20px', width: '50%', borderTop: '2px solid gray' }}></div>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', border: '2px solid gray', width: 'fit-content' }}>
-                  <p>Categories</p>
-                  <img src={addIcon} alt="add" width='24px' height='24px' />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div style={{ width: '100%' }}>
-            <div style={{ backgroundColor: 'white', width: '100%' }}>
-              <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
-                <div style={{ display: 'flex', width: '100%' }} >
-                  <div style={{ height: '20px', width: '50%', borderRight: '2px solid gray', borderTop: '2px solid gray' }}></div>
-                  <div style={{ height: '20px', width: '50%', borderTop: '2px solid gray' }}></div>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', border: '2px solid gray', width: 'fit-content' }}>
-                  <p>Categories</p>
-                  <img src={addIcon} alt="add" width='24px' height='24px' />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div style={{ width: '100%' }}>
-            <div style={{ backgroundColor: 'white', width: '100%' }}>
-              <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
-                <div style={{ display: 'flex', width: '100%' }} >
-                  <div style={{ height: '20px', width: '50%', borderRight: '2px solid gray', borderTop: '2px solid gray' }}></div>
-                  <div style={{ height: '20px', width: '50%' }}></div>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', border: '2px solid gray', width: 'fit-content' }}>
-                  <p>Categories</p>
-                  <img src={addIcon} alt="add" width='24px' height='24px' />
-                </div>
-              </div>
-            </div>
-          </div>
-
+        <div style={{ display: 'flex', width: '100%' }}>
+          {
+            Array.isArray(data) && data?.map((item, index) => {
+              let z: 'one' | 'right' | 'left' | 'both'
+              if (data.length === 1) {
+                z = 'one'
+              } else if (index === 0) {
+                z = 'right'
+              } else if (index === data.length - 1) {
+                z = 'left'
+              } else {
+                z = 'both'
+              }
+              return <Category
+                name={item.name}
+                subcat={item?.subcat}
+                index={z} key={index + Math.random()}
+                length={data.length}
+                setData={setData}
+                data={data}
+              />
+            })
+          }
 
         </div>
 

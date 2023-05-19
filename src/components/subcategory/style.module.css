@@ -1,0 +1,16 @@
+.imgContainer {
+  display: flex;
+  align-items: center;
+  /* width: fit-content; */
+  background-color: orange;
+  border-radius: 10px;
+  flex-grow: 5;
+}
+.imgContainer > p {
+  padding: 7px 3px;
+  margin: 0;
+}
+.img {
+  display: flex;
+  flex-grow: 3;
+}
