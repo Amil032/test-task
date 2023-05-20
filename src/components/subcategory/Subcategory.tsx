@@ -6,6 +6,7 @@ import confirm from '../../assests/confirm_icon_48.png'
 import reject from '../../assests/reject_icon_48.png'
 import classes from './style.module.css'
 import { Border } from '../../types/type';
+import { Keys, colors } from '../../consts/const';
 
 interface Props {
     name: string
@@ -50,8 +51,8 @@ export const Subcategory = ({ name, index, length, clickHandler, subcat, item, s
                 <div style={{ height: '20px', width: 'calc(50% + 36px)', borderTop: (index === 'right' || index === 'both') ? border : 'none' }}></div>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', }}>
-                <div className={classes.imgContainer}  >
-                    {!!item.edit === true ? <p style={{ marginRight: '5px', color: 'white' }}>{name}</p> :
+                <div className={classes.imgContainer} style={{ backgroundColor: colors[item.level as Keys] }}>
+                    {!!item.edit === true ? <p style={{ marginRight: '5px', color: 'white', minWidth: '60px', textAlign: 'center' }}>{name}{item.level}</p> :
                         <input className={classes.input} onChange={onchangeHandler} value={inputsData} />}
                 </div>
                 <div className={classes.img} ref={ref}  >

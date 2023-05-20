@@ -21,11 +21,11 @@ export const Category = ({ name, subcat, index, length, setData, data: value, it
     }
     const clickHandler = (data: any) => {
         if (data) {
-            data.push({ name: inputsData, edit: false })
+            data.push({ name: inputsData, edit: false, level: item.level + 1 })
             setData(prev => [...prev])
         } else {
             console.log(item, 'item')
-            item.subcat = [{ name: inputsData, edit: false }]
+            item.subcat = [{ name: inputsData, edit: false, level: item.level + 1 }]
             setData((prev: any) => [...prev])
         }
         console.log(data, 'data')

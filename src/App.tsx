@@ -6,7 +6,7 @@ import { Border, Categories } from './types/type';
 function App() {
   const [data, setData] = useState<Categories[]>([])
   const addClickHandler = () => {
-    setData(prev => ([...prev, { name: '' }]))
+    setData(prev => ([...prev, { name: '', level: 1 }]))
   }
   console.log(data)
   return (
@@ -23,7 +23,7 @@ function App() {
         </div>
         <div style={{ display: 'flex', width: '100%' }}>
           {
-            Array.isArray(data) && data?.map((item, index) => {
+            data.map((item, index) => {
               let z: Border
               if (data.length === 1) {
                 z = 'one'

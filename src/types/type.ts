@@ -1,7 +1,7 @@
 export interface Categories {
   name: string;
   edit?: boolean;
-  level?: number;
+  level: number;
   subcat?: Categories[];
 }
 
