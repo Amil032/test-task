@@ -1,7 +1,7 @@
 import addIcon from './assests/add_icon_48.png';
 import './App.css';
 import { Subcategory } from './components/subcategory/Subcategory';
-import { Category } from './components/Category';
+import { Border, Category } from './components/Category';
 import { useState } from 'react';
 
 const categories = [
@@ -193,9 +193,9 @@ const categories = [
 ]
 
 function App() {
-  const [data, setData] = useState<Array<any>>(categories)
+  const [data, setData] = useState<Array<any>>([])
   const addClickHandler = () => {
-    setData(prev => ([...prev, { name: 'dsfdf' }]))
+    setData(prev => ([...prev, { name: 'amiloamilo' }]))
 
   }
   console.log(data)
@@ -209,14 +209,14 @@ function App() {
             <p>Head category</p>
             <img src={addIcon} alt="add" width='24px' height='24px' onClick={addClickHandler} />
           </div>
-          <div style={{ borderRight: '2px solid rgba(154, 152, 152, 0.584)', width: '2px', height: '20px' }}></div>
+          {(data.length > 1) && <div style={{ borderRight: '2px solid rgba(154, 152, 152, 0.584)', width: '2px', height: '20px' }}></div>}
         </div>
 
 
         <div style={{ display: 'flex', width: '100%' }}>
           {
             Array.isArray(data) && data?.map((item, index) => {
-              let z: 'one' | 'right' | 'left' | 'both'
+              let z: Border
               if (data.length === 1) {
                 z = 'one'
               } else if (index === 0) {
@@ -233,6 +233,7 @@ function App() {
                 length={data.length}
                 setData={setData}
                 data={data}
+                item={item}
               />
             })
           }
