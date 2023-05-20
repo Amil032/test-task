@@ -1,6 +1,6 @@
 import addIcon from './assests/add_icon_48.png';
 import './App.css';
-import { Subcategory } from './components/subcategory/Subcategory';
+
 import { Border, Category } from './components/Category';
 import { useState } from 'react';
 
@@ -203,16 +203,13 @@ function App() {
 
     <div className="App">
       <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '50px', alignItems: 'center', overflow: 'auto' }}>
-
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', border: '2px solid rgba(154, 152, 152, 0.584)', borderRadius: '10px' }}>
-            <p>Head category</p>
+            <p>Categories</p>
             <img src={addIcon} alt="add" width='24px' height='24px' onClick={addClickHandler} />
           </div>
           {(data.length > 1) && <div style={{ borderRight: '2px solid rgba(154, 152, 152, 0.584)', width: '2px', height: '20px' }}></div>}
         </div>
-
-
         <div style={{ display: 'flex', width: '100%' }}>
           {
             Array.isArray(data) && data?.map((item, index) => {
@@ -234,10 +231,12 @@ function App() {
                 setData={setData}
                 data={data}
                 item={item}
+                itemIndex={index}
+                arr={data}
+
               />
             })
           }
-
         </div>
 
       </div>

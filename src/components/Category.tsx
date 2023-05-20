@@ -1,4 +1,4 @@
-import { SetStateAction, SyntheticEvent, useState } from "react";
+import { SetStateAction, SyntheticEvent, useEffect, useRef, useState } from "react";
 import { Subcategory } from "./subcategory/Subcategory";
 interface Props {
     name: string
@@ -8,9 +8,12 @@ interface Props {
     setData: SetStateAction<any>
     data: any
     item: any
+    itemIndex: number
+    arr: any
 }
-export const Category = ({ name, subcat, index, length, setData, data: value, item }: Props) => {
+export const Category = ({ name, subcat, index, length, setData, data: value, item, itemIndex, arr }: Props) => {
     const [inputsData, setInputsData] = useState('')
+
     const onchangeHandler = (e: SyntheticEvent<HTMLInputElement>) => {
         console.log(e.currentTarget.value)
         setInputsData(e.currentTarget.value)
@@ -28,6 +31,7 @@ export const Category = ({ name, subcat, index, length, setData, data: value, it
 
     }
     console.log(subcat, 'subcut')
+
     return (
 
         <div style={{ display: 'flex', flexDirection: 'column', backgroundColor: 'white', width: '100%' }}>
@@ -41,6 +45,8 @@ export const Category = ({ name, subcat, index, length, setData, data: value, it
                 setData={setData}
                 onchangeHandler={onchangeHandler}
                 inputsData={inputsData}
+                itemIndex={itemIndex}
+                arr={arr}
             />
 
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -58,9 +64,14 @@ export const Category = ({ name, subcat, index, length, setData, data: value, it
                     return <Category
                         key={index + Math.random()}
                         name={item?.name} subcat={item.subcat}
-                        index={z} length={subcat.length}
+                        index={z}
+                        length={subcat.length}
                         setData={setData} data={value}
-                        item={item} />
+                        item={item}
+                        itemIndex={index}
+                        arr={subcat}
+                    />
+
                 })}
             </div>
         </div>
