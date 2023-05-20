@@ -13,7 +13,7 @@ function App() {
     <div className="App">
       <div className='main'>
         <div className='headerWrapper'>
-          <div style={{ display: 'flex', alignItems: 'center', padding: '' }}>
+          <div style={{ display: 'flex', alignItems: 'center', marginLeft: data.length === 1 ? '-50px' : 'auto' }} >
             <div className='header'>
               <p style={{ padding: '7px 3px', margin: '0' }}>Categories</p>
             </div>

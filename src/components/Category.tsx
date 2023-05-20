@@ -5,14 +5,14 @@ interface Props {
     name: string
     subcat?: Categories[]
     index: Border
-    length: number
+    length?: number
     setData: Dispatch<SetStateAction<Categories[]>>
     data: Categories[]
     item: Categories
     itemIndex: number
     arr: Categories[]
 }
-export const Category = ({ name, subcat, index, length, setData, data: value, item, itemIndex, arr }: Props) => {
+export const Category = ({ name, subcat, index, setData, data: value, item, itemIndex, arr }: Props) => {
     const [inputsData, setInputsData] = useState(name)
 
     const onchangeHandler = (e: SyntheticEvent<HTMLInputElement>) => {
@@ -66,7 +66,6 @@ export const Category = ({ name, subcat, index, length, setData, data: value, it
                         name={item?.name}
                         subcat={item.subcat}
                         index={z}
-                        length={subcat.length}
                         setData={setData}
                         data={value}
                         item={item}

@@ -27,9 +27,12 @@ export const Subcategory = ({ name, index, length, clickHandler, subcat, item, s
     const ref = useRef<HTMLDivElement>(null)
 
     const ConfirmHandler = () => {
-        item.edit = true
-        item.name = inputsData
-        setData((prev: any) => [...prev])
+        if (inputsData.length > 0) {
+            item.edit = true
+            item.name = inputsData
+            setData((prev: any) => [...prev])
+        }
+
     }
 
     const deleteHandler = () => {
@@ -52,19 +55,21 @@ export const Subcategory = ({ name, index, length, clickHandler, subcat, item, s
             </div>
             <div style={{ display: 'flex', alignItems: 'center', }}>
                 <div className={classes.imgContainer} style={{ backgroundColor: colors[item.level as Keys] }}>
-                    {!!item.edit === true ? <p style={{ marginRight: '5px', color: 'white', minWidth: '60px', textAlign: 'center' }}>{name}{item.level}</p> :
-                        <input className={classes.input} onChange={onchangeHandler} value={inputsData} />}
+                    {!!item.edit === true ? <p style={{ marginRight: '5px', color: 'white', minWidth: '60px', textAlign: 'center' }}>{name}</p> :
+                        <input className={classes.input} onChange={onchangeHandler}
+                            placeholder='Category name'
+                        />}
                 </div>
                 <div className={classes.img} ref={ref}  >
                     {
 
                         !!item.edit === true ? <>
-                            <img src={addIcon} alt="add" width='24px' height='24px' onClick={() => clickHandler(subcat)} />
-                            <img src={editIcon} alt="edit" width='24px' height='24px' onClick={editHandler} />
-                            <img src={closeIcon} alt="close" width='24px' height='24px' onClick={deleteHandler} /></> :
+                            <img src={addIcon} alt="add" onClick={() => clickHandler(subcat)} />
+                            <img src={editIcon} alt="edit" onClick={editHandler} />
+                            <img src={closeIcon} alt="close" onClick={deleteHandler} /></> :
                             <>
-                                <img src={reject} alt="edit" width='24px' height='24px' onClick={deleteHandler} />
-                                <img src={confirm} alt="close" width='24px' height='24px' onClick={ConfirmHandler} />
+                                <img src={reject} alt="edit" onClick={deleteHandler} />
+                                <img src={confirm} alt="close" onClick={ConfirmHandler} />
                             </>
                     }
                 </div>
