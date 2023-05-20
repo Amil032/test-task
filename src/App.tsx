@@ -1,214 +1,25 @@
 import addIcon from './assests/add_icon_48.png';
 import './App.css';
-
-import { Border, Category } from './components/Category';
+import { Category } from './components/Category';
 import { useState } from 'react';
-
-const categories = [
-  {
-    name: 'Category1',
-    subcat: [{
-      name: 'subcat1',
-      subcat: [{
-        name: 'subsubcat',
-        subcat: [{
-          name: 'subcatsubcat2'
-        }]
-      }]
-    }, {
-      name: 'subcat2'
-    }
-    ]
-
-  },
-  {
-
-    name: 'Category2',
-    subcat: [
-      {
-        name: 'sub1',
-        subcat: [
-          {
-            name: 'subsubcat',
-            subcat: [{
-              name: 'subcatsubcat2'
-            }]
-          }, { name: 'ddfdfd' }
-        ]
-      }
-    ]
-
-  }
-  ,
-  {
-    name: 'Category3',
-    subcat: [{
-      name: 'subcut3',
-      subcat: [
-        {
-          name: 'subcutsub3',
-          subcat: [
-            {
-              name: 'subsubsub3',
-              subcat: [
-                {
-                  name: 'subsubsub3',
-                  subcat: []
-                },
-                {
-                  name: 'subsubsub32'
-                }
-              ]
-            },
-            {
-              name: 'subsubsub32', subcat: [
-                {
-                  name: 'subsubsub3',
-                  subcat: [
-                    {
-                      name: 'subsubsub4'
-                    },
-                    {
-                      name: 'subsubsub42',
-
-                    }
-                  ]
-                },
-                {
-                  name: 'subsubsub32'
-                }
-              ]
-            }
-          ]
-        },
-        {
-          name: 'subcutsub4',
-          subcat: [
-            {
-              name: 'subsubsub4',
-              subcat: [
-                {
-                  name: 'subsubsub4',
-                  subcat: [
-                    {
-                      name: 'subsubsub4'
-                    },
-                    {
-                      name: 'subsubsub42',
-
-                    }
-                  ]
-                },
-                {
-                  name: 'subsubsub42',
-
-                }
-              ]
-            },
-            {
-              name: 'subsubsub42',
-
-            }
-          ]
-        }]
-    }]
-  }
-  ,
-  {
-    name: 'Category3',
-    subcat: [{
-      name: 'subcut3',
-      subcat: [
-        {
-          name: 'subcutsub3',
-          subcat: [
-            {
-              name: 'subsubsub3',
-              subcat: [
-                {
-                  name: 'subsubsub3',
-                  subcat: []
-                },
-                {
-                  name: 'subsubsub32'
-                }
-              ]
-            },
-            {
-              name: 'subsubsub32', subcat: [
-                {
-                  name: 'subsubsub3',
-                  subcat: [
-                    {
-                      name: 'subsubsub4'
-                    },
-                    {
-                      name: 'subsubsub42',
-
-                    }
-                  ]
-                },
-                {
-                  name: 'subsubsub32'
-                }
-              ]
-            }
-          ]
-        },
-        {
-          name: 'subcutsub4',
-          subcat: [
-            {
-              name: 'subsubsub4',
-              subcat: [
-                {
-                  name: 'subsubsub4',
-                  subcat: [
-                    {
-                      name: 'subsubsub4'
-                    },
-                    {
-                      name: 'subsubsub42',
-
-                    }
-                  ]
-                },
-                {
-                  name: 'subsubsub42',
-
-                }
-              ]
-            },
-            {
-              name: 'subsubsub42',
-
-            }
-          ]
-        }]
-    }]
-  }
-  , {
-    name: 'ail'
-  }
-]
-
+import { Border, Categories } from './types/type';
 function App() {
-  const [data, setData] = useState<Array<any>>([])
+  const [data, setData] = useState<Categories[]>([])
   const addClickHandler = () => {
-    setData(prev => ([...prev, { name: 'amiloamilo' }]))
-
+    setData(prev => ([...prev, { name: '' }]))
   }
   console.log(data)
   return (
-
     <div className="App">
-      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '50px', alignItems: 'center', overflow: 'auto' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <div style={{ display: 'flex', alignItems: 'center', border: '2px solid rgba(154, 152, 152, 0.584)', borderRadius: '10px' }}>
-            <p>Categories</p>
+      <div className='main'>
+        <div className='headerWrapper'>
+          <div style={{ display: 'flex', alignItems: 'center', padding: '' }}>
+            <div className='header'>
+              <p style={{ padding: '7px 3px', margin: '0' }}>Categories</p>
+            </div>
             <img src={addIcon} alt="add" width='24px' height='24px' onClick={addClickHandler} />
           </div>
-          {(data.length > 1) && <div style={{ borderRight: '2px solid rgba(154, 152, 152, 0.584)', width: '2px', height: '20px' }}></div>}
+          {(data.length > 1) && <div style={{ borderLeft: '2px solid rgba(154, 152, 152, 0.584)', width: '20px', height: '20px' }}></div>}
         </div>
         <div style={{ display: 'flex', width: '100%' }}>
           {
@@ -233,7 +44,6 @@ function App() {
                 item={item}
                 itemIndex={index}
                 arr={data}
-
               />
             })
           }

@@ -5,11 +5,12 @@ import editIcon from '../../assests/edit_icon_48.png'
 import confirm from '../../assests/confirm_icon_48.png'
 import reject from '../../assests/reject_icon_48.png'
 import classes from './style.module.css'
+import { Border } from '../../types/type';
 
 interface Props {
     name: string
-    index: 'one' | 'right' | 'left' | 'both'
-    length: number
+    index: Border
+    length: number | undefined
     clickHandler: any
     subcat: any
     item: any
@@ -45,16 +46,17 @@ export const Subcategory = ({ name, index, length, clickHandler, subcat, item, s
     return (
         <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column', width: '100%' }}>
             <div style={{ display: 'flex', width: '100%' }} >
-                <div style={{ height: '20px', width: 'calc(50% - 36px)', borderRight: '2px solid rgba(154, 152, 152, 0.584)', borderTop: (index === 'left' || index === 'both') ? '2px solid rgba(154, 152, 152, 0.584)' : 'none', }}></div>
-                <div style={{ height: '20px', width: 'calc(50% + 36px)', borderTop: (index === 'right' || index === 'both') ? '2px solid rgba(154, 152, 152, 0.584)' : 'none' }}></div>
+                <div style={{ height: '20px', width: 'calc(50% - 36px)', borderRight: border, borderTop: (index === 'left' || index === 'both') ? border : 'none', }}></div>
+                <div style={{ height: '20px', width: 'calc(50% + 36px)', borderTop: (index === 'right' || index === 'both') ? border : 'none' }}></div>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', }}>
                 <div className={classes.imgContainer}  >
                     {!!item.edit === true ? <p style={{ marginRight: '5px', color: 'white' }}>{name}</p> :
-                        <input className={classes.input} onChange={onchangeHandler} />}
+                        <input className={classes.input} onChange={onchangeHandler} value={inputsData} />}
                 </div>
                 <div className={classes.img} ref={ref}  >
                     {
+
                         !!item.edit === true ? <>
                             <img src={addIcon} alt="add" width='24px' height='24px' onClick={() => clickHandler(subcat)} />
                             <img src={editIcon} alt="edit" width='24px' height='24px' onClick={editHandler} />
@@ -68,8 +70,9 @@ export const Subcategory = ({ name, index, length, clickHandler, subcat, item, s
 
             </div>
 
-            {((length !== 1) && !!length) && <div style={{ borderLeft: '2px solid rgba(154, 152, 152, 0.584)', width: '72px', height: '20px' }}></div>}
+            {((length !== 1) && !!length) && <div style={{ borderLeft: border, width: '72px', height: '20px' }}></div>}
         </div>
     );
 };
 
+const border = '2px solid rgba(154, 152, 152, 0.584)'

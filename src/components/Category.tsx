@@ -1,18 +1,19 @@
-import { SetStateAction, SyntheticEvent, useEffect, useRef, useState } from "react";
+import { Dispatch, SetStateAction, SyntheticEvent, useState } from "react";
 import { Subcategory } from "./subcategory/Subcategory";
+import { Border, Categories } from "../types/type";
 interface Props {
     name: string
-    subcat?: any
+    subcat?: Categories[]
     index: Border
     length: number
-    setData: SetStateAction<any>
-    data: any
-    item: any
+    setData: Dispatch<SetStateAction<Categories[]>>
+    data: Categories[]
+    item: Categories
     itemIndex: number
-    arr: any
+    arr: Categories[]
 }
 export const Category = ({ name, subcat, index, length, setData, data: value, item, itemIndex, arr }: Props) => {
-    const [inputsData, setInputsData] = useState('')
+    const [inputsData, setInputsData] = useState(name)
 
     const onchangeHandler = (e: SyntheticEvent<HTMLInputElement>) => {
         console.log(e.currentTarget.value)
@@ -21,7 +22,7 @@ export const Category = ({ name, subcat, index, length, setData, data: value, it
     const clickHandler = (data: any) => {
         if (data) {
             data.push({ name: inputsData, edit: false })
-            setData((prev: any) => [...prev])
+            setData(prev => [...prev])
         } else {
             console.log(item, 'item')
             item.subcat = [{ name: inputsData, edit: false }]
@@ -48,7 +49,6 @@ export const Category = ({ name, subcat, index, length, setData, data: value, it
                 itemIndex={itemIndex}
                 arr={arr}
             />
-
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 {subcat?.map((item: any, index: number) => {
                     let z: Border
@@ -63,10 +63,12 @@ export const Category = ({ name, subcat, index, length, setData, data: value, it
                     }
                     return <Category
                         key={index + Math.random()}
-                        name={item?.name} subcat={item.subcat}
+                        name={item?.name}
+                        subcat={item.subcat}
                         index={z}
                         length={subcat.length}
-                        setData={setData} data={value}
+                        setData={setData}
+                        data={value}
                         item={item}
                         itemIndex={index}
                         arr={subcat}
@@ -78,4 +80,3 @@ export const Category = ({ name, subcat, index, length, setData, data: value, it
     )
 };
 
-export type Border = 'one' | 'right' | 'left' | 'both'
