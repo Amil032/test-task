@@ -11,31 +11,30 @@ interface Props {
     item: Categories
     itemIndex: number
     arr: Categories[]
+
 }
 export const Category = ({ name, subcat, index, setData, data: value, item, itemIndex, arr }: Props) => {
     const [inputsData, setInputsData] = useState(name)
-
+    console.log(inputsData, 'inputdata')
     const onchangeHandler = (e: SyntheticEvent<HTMLInputElement>) => {
-        console.log(e.currentTarget.value)
         setInputsData(e.currentTarget.value)
     }
     const clickHandler = (data: any) => {
         if (data) {
             data.push({ name: inputsData, edit: false, level: item.level + 1 })
             setData(prev => [...prev])
+            setInputsData('')
         } else {
-            console.log(item, 'item')
             item.subcat = [{ name: inputsData, edit: false, level: item.level + 1 }]
             setData((prev: any) => [...prev])
+            setInputsData('')
         }
-        console.log(data, 'data')
 
     }
-    console.log(subcat, 'subcut')
 
     return (
 
-        <div style={{ display: 'flex', flexDirection: 'column', backgroundColor: 'white', width: '100%' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
             <Subcategory
                 name={name}
                 index={index}
@@ -71,6 +70,7 @@ export const Category = ({ name, subcat, index, setData, data: value, item, item
                         item={item}
                         itemIndex={index}
                         arr={subcat}
+
                     />
 
                 })}

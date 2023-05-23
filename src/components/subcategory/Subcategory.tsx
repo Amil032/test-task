@@ -1,4 +1,4 @@
-import { SetStateAction, SyntheticEvent, useRef } from 'react';
+import { Dispatch, SetStateAction, SyntheticEvent, useRef } from 'react';
 import addIcon from '../../assests/add_icon_48.png';
 import closeIcon from '../../assests/close_icon_48.png';
 import editIcon from '../../assests/edit_icon_48.png'
@@ -20,6 +20,7 @@ interface Props {
     inputsData: string
     itemIndex: number
     arr: any
+    // setInputsData: Dispatch<SetStateAction<string>>
 
 }
 export const Subcategory = ({ name, index, length, clickHandler, subcat, item, setData, onchangeHandler, inputsData, itemIndex, arr }: Props) => {
@@ -36,16 +37,13 @@ export const Subcategory = ({ name, index, length, clickHandler, subcat, item, s
     }
 
     const deleteHandler = () => {
-        // eslint-disable-next-line no-delete-var
         arr.splice(itemIndex, 1)
         setData((prev: any) => [...prev])
-        console.log(index, 'indexxx')
     }
 
     const editHandler = () => {
         item.edit = false
         setData((prev: any) => [...prev])
-        console.log('clicked')
     }
     return (
         <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column', width: '100%' }}>
@@ -53,16 +51,17 @@ export const Subcategory = ({ name, index, length, clickHandler, subcat, item, s
                 <div style={{ height: '20px', width: 'calc(50% - 36px)', borderRight: border, borderTop: (index === 'left' || index === 'both') ? border : 'none', }}></div>
                 <div style={{ height: '20px', width: 'calc(50% + 36px)', borderTop: (index === 'right' || index === 'both') ? border : 'none' }}></div>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', }}>
+            <div style={{ display: 'flex', alignItems: 'center', margin: '0px 10px' }}>
                 <div className={classes.imgContainer} style={{ backgroundColor: colors[item.level as Keys] }}>
                     {!!item.edit === true ? <p style={{ marginRight: '5px', color: 'white', minWidth: '60px', textAlign: 'center' }}>{name}</p> :
-                        <input className={classes.input} onChange={onchangeHandler}
+                        <input className={classes.input}
+                            onChange={onchangeHandler}
                             placeholder='Category name'
+                            value={inputsData}
                         />}
                 </div>
                 <div className={classes.img} ref={ref}  >
                     {
-
                         !!item.edit === true ? <>
                             <img src={addIcon} alt="add" onClick={() => clickHandler(subcat)} />
                             <img src={editIcon} alt="edit" onClick={editHandler} />
