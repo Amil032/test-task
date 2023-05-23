@@ -19,7 +19,7 @@ export const Header = ({ centerateHandler, scaleChangeHandler, setScale, scale }
     <div className={classes.header}>
       <div className={classes.text}>
         <span>Services</span>
-        <span className={classes.number}> 0</span>
+        <div className={classes.number}> 0</div>
       </div>
 
       <div className={classes.tools}>
